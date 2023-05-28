@@ -13,7 +13,7 @@ public class CourierClient extends BaseClient {
                 .spec(getSpec())
                 .body(createCourierRequest)
                 .when()
-                .post("/api/v1/courier")
+                .post(EndpointConstants.API_BASE_URI + EndpointConstants.COURIER_ENDPOINT)
                 .then();
     }
 
@@ -22,7 +22,7 @@ public class CourierClient extends BaseClient {
                 .spec(getSpec())
                 .body(loginCourierRequest)
                 .when()
-                .post("/api/v1/courier/login")
+                .post(EndpointConstants.API_BASE_URI + EndpointConstants.COURIER_LOGIN_ENDPOINT)
                 .then();
     }
 
@@ -31,7 +31,7 @@ public class CourierClient extends BaseClient {
                 .spec(getSpec())
                 .pathParam("id", id)
                 .when()
-                .delete("/api/v1/courier/{id}")
+                .delete(EndpointConstants.API_BASE_URI + EndpointConstants.COURIER_ENDPOINT + "/{id}")
                 .then();
     }
 
@@ -40,7 +40,7 @@ public class CourierClient extends BaseClient {
                 .spec(getSpec())
                 .body(createOrderRequest)
                 .when()
-                .post("/api/v1/orders")
+                .post(EndpointConstants.API_BASE_URI + EndpointConstants.ORDERS_ENDPOINT)
                 .then();
     }
 
@@ -49,7 +49,7 @@ public class CourierClient extends BaseClient {
                 .spec(getSpec())
                 .when()
                 .queryParam("track", track)
-                .put("/api/v1/orders/cancel")
+                .put(EndpointConstants.API_BASE_URI + EndpointConstants.ORDERS_CANCEL_ENDPOINT)
                 .then();
     }
 
@@ -57,7 +57,7 @@ public class CourierClient extends BaseClient {
         return given()
                 .spec(getSpec())
                 .when()
-                .get("/api/v1/orders")
+                .get(EndpointConstants.API_BASE_URI + EndpointConstants.ORDERS_ENDPOINT)
                 .then();
     }
 }
